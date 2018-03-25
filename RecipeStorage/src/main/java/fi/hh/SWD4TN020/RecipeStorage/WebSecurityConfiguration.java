@@ -23,8 +23,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	 @Override
 	    protected void configure(HttpSecurity http) throws Exception {
 	        http
-	        .authorizeRequests().antMatchers("/css/**").permitAll() // Enable css when logged out
-	        .antMatchers("/delete/{id}").hasAuthority("ADMIN") //delete-functionality was not working when using hasRole, why?
+	        .authorizeRequests().antMatchers("/css/**", "/", "/recipelist").permitAll() // Enable css when logged out
+	        .antMatchers("/delete/{id}").hasRole("ADMIN")
 	        .and()
 	        .authorizeRequests()
 	          .anyRequest().authenticated()

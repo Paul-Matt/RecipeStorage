@@ -27,8 +27,6 @@ public class User {
 	@Column(name = "role", nullable = false)
 	private String role;
 
-	// parametriton konstruktori, Spring-alusta tykkää käyttää parametrittomia,
-	// yleensä katoaa näkyvistä kun luodaan parametrillisia
 	public User() {
 	}
 

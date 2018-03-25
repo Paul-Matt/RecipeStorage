@@ -12,13 +12,16 @@
 	<div class="col-md-4">
 		<h1>Recipes</h1>
 	</div>
-	<div class="col-md-4">
-		<h3 th:inline="text">Welcome
-			[[${#httpServletRequest.remoteUser}]]</h3>
+	<div sec:authorize="isAuthenticated()" class="col-md-4">
+		<h3 th:inline="text">
+			Welcome <span sec:authentication="name"></span>
+		</h3>
 	</div>
+
 	<div class="col-md-4" style="padding: 20px 0">
 		<form th:action="@{/logout}" method="post">
-			<input type="submit" value="Sign Out" class="btn btn-danger" />
+			<input type="submit" sec:authorize="isAuthenticated()" value="Sign Out" class="btn btn-danger" />
+			<input type="submit" sec:authorize="!isAuthenticated()" value="Sign In" class="btn btn-danger" />
 		</form>
 	</div>
 	<table class="table table-striped">
@@ -28,7 +31,8 @@
 			<th>Ingredients</th>
 			<th>Instructions</th>
 			<th>Category</th>
-			<th sec:authorize="hasRole('ADMIN')"></th>
+			<th sec:authorize="hasRole('ROLE_ADMIN')"></th>
+			<th sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"></th>
 		</tr>
 		<tr th:each="recipe : ${recipes}">
 			<td th:text="${recipe.id}"></td>
@@ -36,12 +40,14 @@
 			<td th:text="${recipe.ingredients}"></td>
 			<td th:text="${recipe.instructions}"></td>
 			<td th:text="${recipe.category.name}"></td>
-			<td sec:authorize="hasAuthority('ADMIN')"><a
+			<td sec:authorize="hasRole('ROLE_ADMIN')"><a
 				th:href="@{/delete/{id}(id=${recipe.id})}" class="btn btn-danger">Delete</a></td>
-			<td><a class="btn btn-primary"
-				th:href="@{/edit/{id}(id=${recipe.id})}">Edit</a></td>
+			<td sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"><a
+				class="btn btn-primary" th:href="@{/edit/{id}(id=${recipe.id})}">Edit</a></td>
 		</tr>
 	</table>
-	<a class="btn btn-success" href="/add">Add recipe</a>
+	<div sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
+		<a class="btn btn-success" href="/add">Add recipe</a>
+	</div>0
 </body>
 </html>

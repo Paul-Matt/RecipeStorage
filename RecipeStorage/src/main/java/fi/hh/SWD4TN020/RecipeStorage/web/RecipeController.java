@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +21,7 @@ import fi.hh.SWD4TN020.RecipeStorage.domain.Recipe;
 import fi.hh.SWD4TN020.RecipeStorage.domain.RecipeRepository;
 
 @Controller
-
+@EnableAutoConfiguration
 public class RecipeController {
 
 	@Autowired
@@ -83,7 +84,7 @@ public class RecipeController {
 
 	// poistetaan resepti, id välitetään urlissa requestmappingin avulla, voisi olla
 	// muukin attribuutti kuin id
-	@PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteRecipe(@PathVariable("id") Long recipeId, Model model) {
 		repository.deleteById(recipeId);

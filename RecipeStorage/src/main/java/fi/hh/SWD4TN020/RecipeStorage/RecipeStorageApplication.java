@@ -58,9 +58,9 @@ public class RecipeStorageApplication extends SpringBootServletInitializer {
 			
 			// Create users: admin/admin user/user
 			User user1 = new User("user", "$2a$10$PKLObypWMb8NDC4fEDX3ee3A7wPTTfijqBD1deoRSrwvauzYbFv6S",
-					"useremail@mail.fi", "USER");
+					"useremail@mail.fi", "ROLE_USER");
 			User user2 = new User("admin", "$2a$10$3He7LAyyIULAy0gMB0YcNucnl4QjbxOwgbzXLtj9DdWvuJ/fuGMt2",
-					"adminemail@mail.fi", "ADMIN");
+					"adminemail@mail.fi", "ROLE_ADMIN");
 			urepository.save(user1);
 			urepository.save(user2);
 
