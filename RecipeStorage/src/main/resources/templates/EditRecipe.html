@@ -3,43 +3,47 @@
 <head>
     <title>Edit recipe</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <link type="text/css" rel="stylesheet"
+	href="/css/bootstrap.min.css"
+	 />
     <style type="text/css">
-    	label{
-    		width:100px;
-    		display:inline-block;
-    	}
-    	textarea{
-    		vertical-align:text-top;
-    	}
+    	.btn-success{
+    		margin-bottom: 70px;
+    		}
     </style>
 </head>
 <body>
 <h1>Edit recipe</h1>
 <div>
- <form th:object="${recipe}" th:action="@{/save/{id}(id=${recipe.id})}" action="#" method="post">
-<label for="name">Name</label>
-<input type="text" size="60" id="name" th:field="*{name}" />
-<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name cannot be empty</p>
-<div>
-<label for="ingredients">Ingredients</label>
-<textarea rows= "20" cols= "50" id="ingredients" th:field="*{ingredients}" />
-<p th:if="${#fields.hasErrors('ingredients')}" th:errors="*{ingredients}">Ingredients cannot be empty</p>
-</div>
-<div>
-<label for="instructions">Instructions</label>
-<textarea rows= "20" cols= "50" th:field="*{instructions}"/>
-<p th:if="${#fields.hasErrors('instructions')}" th:errors="*{instructions}">Instructions cannot be empty</p>
-</div>
-<div style="clear: both; display: block; height: 10px;"></div>						
+	<div class="col-md-4" >
+ 		<form th:object="${recipe}" th:action="@{/save/{id}(id=${recipe.id})}" action="#" method="post">
+		<label for="name">Name</label>
+		<input type="text" size="48" id="name" th:field="*{name}" />
+		<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name cannot be empty</p>
+		<div style="clear: both; display: block; height: 10px;"></div>
+	<div>
+		<label for="ingredients">Ingredients</label>
+		<textarea rows= "20" cols= "50" id="ingredients" th:field="*{ingredients}" />
+		<div style="clear: both; display: block; height: 10px;"></div>
+		<p th:if="${#fields.hasErrors('ingredients')}" th:errors="*{ingredients}">Ingredients cannot be empty</p>
+	</div>
+	<div>
+		<label for="instructions">Instructions</label>
+		<textarea rows= "20" cols= "50" th:field="*{instructions}"/>
+		<div style="clear: both; display: block; height: 10px;"></div>
+		<p th:if="${#fields.hasErrors('instructions')}" th:errors="*{instructions}">Instructions cannot be empty</p>
+
+	</div>
+	<div style="clear: both; display: block; height: 10px;"></div>						
 		  	<label for="categorylist">Category</label>
 			 <select id="categorylist" th:field="*{category}" class="form-control">
        			<option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+       			<div style="clear: both; display: block; height: 10px;"></div>
     		</select>
-			<!--   <datalist id="categorylist" th:field="*{category}" class="form-control">
-       			<option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
-    		</datalist> -->
-<input type="submit" value="Save"></input>
-</form>
+    			<div style="clear: both; display: block; height: 20px;"></div>
+	<input class="btn btn-success" type="submit" value="Save"></input>
+	</form>
+	</div>
 </div>
 </body>
 </html>

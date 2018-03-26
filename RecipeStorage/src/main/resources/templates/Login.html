@@ -3,18 +3,30 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
         <title>RecipeStorage secure login page</title>
+        <link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+        <style type="text/css">
+    	label{
+    		margin-top: 10px;
+    		}
+    </style>
     </head>
     <body>
+  	<div class="col-md-4" >
         <div th:if="${param.error}">
             Invalid username and password.
+        <div style="clear: both; display: block; height: 10px;"></div>
         </div>
         <div th:if="${param.logout}">
             You have been logged out.
+            <div style="clear: both; display: block; height: 10px;"></div>
         </div>
         <form th:action="@{/login}" method="post">
             <div><label> Username : <input type="text" name="username"/> </label></div>
+            <div style="clear: both; display: block; height: 10px;"></div>
             <div><label> Password: <input type="password" name="password"/> </label></div>
-            <div><input type="submit" value="Sign In"/></div>
+            <div style="clear: both; display: block; height: 10px;"></div>
+            <div><input class="btn btn-success" type="submit" value="Sign In"/></div>
         </form>
+        </div>
     </body>
 </html>
