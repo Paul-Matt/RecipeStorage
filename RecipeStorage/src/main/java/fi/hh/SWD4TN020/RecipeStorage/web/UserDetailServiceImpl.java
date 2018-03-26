@@ -1,5 +1,7 @@
 package fi.hh.SWD4TN020.RecipeStorage.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,9 +32,9 @@ public class UserDetailServiceImpl implements UserDetailsService {
 	 * nimellä loadUserByUsername, service-luokka vertailee käyttiksen ja salasanan, Spring käyttää servicen kautta repositorya
 	 */
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User curruser = repository.findByUsername(username);
-		UserDetails user = new org.springframework.security.core.userdetails.User(username, curruser.getPasswordHash(),
-				AuthorityUtils.createAuthorityList(curruser.getRole()));
+		List<User> currusers = repository.findByUsername(username);
+		UserDetails user = new org.springframework.security.core.userdetails.User(username, currusers.get(0).getPasswordHash(),
+				AuthorityUtils.createAuthorityList(currusers.get(0).getRole()));
 		return user;
 	}
 }
