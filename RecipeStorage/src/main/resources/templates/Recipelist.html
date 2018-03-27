@@ -33,7 +33,6 @@
 	</div>
 	<table class="table table-striped">
 		<tr>
-			<th>Id</th>
 			<th>Name</th>
 			<th>Ingredients</th>
 			<th>Instructions</th>
@@ -42,7 +41,6 @@
 			<th sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')"></th>
 		</tr>
 		<tr th:each="recipe : ${recipes}">
-			<td th:text="${recipe.id}"></td>
 			<td th:text="${recipe.name}"></td>
 			<td th:text="${recipe.ingredients}"></td>
 			<td th:text="${recipe.instructions}"></td>
