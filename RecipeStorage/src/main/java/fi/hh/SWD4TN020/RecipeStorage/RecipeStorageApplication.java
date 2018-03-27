@@ -43,17 +43,14 @@ public class RecipeStorageApplication extends SpringBootServletInitializer {
 			crepository.save(new Category("Soups"));
 			crepository.save(new Category("Main course"));
 			crepository.save(new Category("Desserts"));
-			//List<String> list = Stream.of("one", "two", "three").collect(Collectors.toList());
 			repository
 					.save(new Recipe("Jamie Oliver's pesto sauce",
-							//(List<String>) Stream.of("1/2 a clove garlic", "1 big bunch of fresh basil",
 							"1/2 a clove garlic, 1 big bunch of fresh basil, 1 handful of pine nuts, 1 good handful of freshly grated Parmesan cheese, extra virgin olive oil" ,
 							"Peel the garlic, then pound in a pestle and mortar with a pinch of sea salt. Pick, roughly chop and add the basil leaves, then bash to a paste (or pulse in a food processor). Add the pine nuts (very lightly toast first, if you like) to the mixture and pound again, then stir in half the Parmesan. Drizzle in some oil – you need just enough to bind the sauce and get it to an oozy consistency. Add most of the remaining cheese, then season to perfection with salt and black pepper. Have a taste, and keep adding a bit more cheese or oil until you are happy with the taste and consistency.",
 							crepository.findByName("Sauces").get(0)));
 			repository.save(new Recipe("Sweet potato soup",
-					//(List<String>) Stream.of( "600-800g sweet potato", "2 onions", "3-5 garlic cloves", "4dl water",
 					"600-800g sweet potato, 2 onions, 3-5 garlic cloves, 4dl water,1/2 stock cube, 4dl coconut milk, 1 tsp sambal oelek chili paste, juice of two limes or one lemon",
-					"Peel and chop the sweet potato into cubes. Peel and chop onions and garlic. Heat the water, and coconut milk in a pot. Add stock cube, sweet potato, onions, garlic and sambal oelek paste. Heat until boiling, and let the soup boil for about 15 min or until sweet potato is cooked enough. Use a mixer to puree the soup. Add the lime or lemon juice",
+					"Peel and chop the sweet potato into cubes. Peel and chop onions and garlic. Heat the water, and coconut milk in a pot. Add stock cube, sweet potato, onions, garlic and sambal oelek paste. Heat until boiling, and let the soup boil for about 15 min or until sweet potato is cooked enough. Use a mixer to puree the soup. Add the lime or lemon juice.",
 					crepository.findByName("Soups").get(0)));
 			
 			// Create users: admin/admin user/user

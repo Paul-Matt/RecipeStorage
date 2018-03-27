@@ -1,0 +1,11 @@
+body{
+	margin-bottom: 70px;
+}
+
+.spacer{
+	clear: both; display: block; height: 10px;
+}
+
+.bigspacer{
+	clear: both; display: block; height: 20px;
+}

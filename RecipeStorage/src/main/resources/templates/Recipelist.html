@@ -17,12 +17,19 @@
 			Welcome <span sec:authentication="name"></span>
 		</h3>
 	</div>
-
-	<div class="col-md-4" style="padding: 20px 0">
-		<form th:action="@{/logout}" method="post">
+	<div class="col-md-4">
+		<div sec:authorize="isAuthenticated()" class="col-md-4" style="padding: 20px 0">
+			<form th:action="@{/logout}" method="post">
 			<input type="submit" sec:authorize="isAuthenticated()" value="Sign Out" class="btn btn-danger" />
-			<input type="submit" sec:authorize="!isAuthenticated()" value="Sign In" class="btn btn-danger" />
-		</form>
+			</form>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="col-md-4" style="padding: 20px 0">
+			<div sec:authorize="!isAuthenticated()" >
+				<a class="btn btn-success" href="/login">Log in</a> 
+			</div>
+		</div>
 	</div>
 	<table class="table table-striped">
 		<tr>
@@ -46,8 +53,10 @@
 				class="btn btn-primary" th:href="@{/edit/{id}(id=${recipe.id})}">Edit</a></td>
 		</tr>
 	</table>
-	<div sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
-		<a class="btn btn-success" href="/add">Add recipe</a>
-	</div>
+		<div class="col-md-4">
+			<div sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')">
+			<a class="btn btn-success" href="/add">Add recipe</a>
+			</div>
+		</div>
 </body>
 </html>
