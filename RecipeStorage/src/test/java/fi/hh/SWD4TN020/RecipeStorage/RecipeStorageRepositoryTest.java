@@ -21,11 +21,11 @@ public class RecipeStorageRepositoryTest {
 	@Autowired
 	private RecipeRepository repository;
 	
-	@Test
+	
+		@Test
 	//Testataan search RecipeRepositoryssa
 	public void findByNameShouldReturnRecipe() {
 		List<Recipe> recipes = repository.findByNameIgnoreCase("Jamie Oliver's pesto sauce");
-		
 		assertThat(recipes).hasSize(1);
 		assertThat(recipes.get(0).getIngredients()).isEqualTo("1/2 a clove garlic, 1 big bunch of fresh basil, 1 handful of pine nuts, 1 good handful of freshly grated Parmesan cheese, extra virgin olive oil");		
 	}
