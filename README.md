@@ -20,4 +20,4 @@ and at least two of the following:
 - I18n (multiple languages) 
 - some other Spring Boot-functionality
 
-The app is running in Heroku: [Recipelist](https://recipe-storage.herokuapp.com/recipelist)
+~~The app is running in Heroku: [Recipelist](https://recipe-storage.herokuapp.com/recipelist)~~
